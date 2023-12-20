@@ -24,7 +24,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
       - name: pull image
-        run: docker pull ubuntu:latesr
+        run: docker pull ubuntu:latest
 
       - name: Test Image Size Action
         uses: ./docker-bench-security
