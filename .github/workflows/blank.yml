@@ -16,8 +16,8 @@ on:
 jobs:
   test-clean-workspace:
     runs-on: ubuntu-latest
-    container: ubuntu:latest
     steps:
+      - uses: actions/checkout@v3
       - name: Create test_file
         run: touch test_file
       - name: Sanity check that test_file was created
