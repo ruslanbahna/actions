@@ -17,6 +17,7 @@ runs:
       id: run-docker-benchmark
       working-directory: ./docker-bench-security
       run: |
+        docker info
         chmod +x docker-bench-security.sh
         ./docker-bench-security.sh -c container_images -i ${{ inputs.image-name }}
         echo "Debug: Contents of docker-bench-security.log.json:"
