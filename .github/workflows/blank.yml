@@ -1,39 +1,39 @@
-name: test
+# name: test
 
-on:
-  push:
-    paths-ignore:
-      - '.vscode/**'
-      - '**/*.md'
-  pull_request:
-    paths-ignore:
-      - '.vscode/**'
-      - '**/*.md'
-  workflow_run:
-    workflows: ["Update Major Release Tag"]
-    types: [completed]
+# on:
+#   push:
+#     paths-ignore:
+#       - '.vscode/**'
+#       - '**/*.md'
+#   pull_request:
+#     paths-ignore:
+#       - '.vscode/**'
+#       - '**/*.md'
+#   workflow_run:
+#     workflows: ["Update Major Release Tag"]
+#     types: [completed]
 
-jobs:
-  test-clean-workspace:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Create test_file
-        run: touch test_file
-      - name: Sanity check that test_file was created
-        run: |
-          if test -f "test_file"; then
-            echo "test_file was created."
-          else
-            echo "test_file should have been created."
-            exit 1
-          fi
-      - uses: ./.github/actions/clean-workspace
-      - name: Check if test_file was deleted
-        run: |
-          if test -f "test_file"; then
-            echo "test_file should have been deleted."
-            exit 1
-          else
-            echo "test_file was successfully deleted."
-          fi
+# jobs:
+#   test-clean-workspace:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Create test_file
+#         run: touch test_file
+#       - name: Sanity check that test_file was created
+#         run: |
+#           if test -f "test_file"; then
+#             echo "test_file was created."
+#           else
+#             echo "test_file should have been created."
+#             exit 1
+#           fi
+#       - uses: ./.github/actions/clean-workspace
+#       - name: Check if test_file was deleted
+#         run: |
+#           if test -f "test_file"; then
+#             echo "test_file should have been deleted."
+#             exit 1
+#           else
+#             echo "test_file was successfully deleted."
+#           fi

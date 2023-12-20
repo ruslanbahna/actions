@@ -1,20 +1,20 @@
-name: Update Major Release Tag
+# name: Update Major Release Tag
 
-on:
-  release:
-    types: [created]
+# on:
+#   release:
+#     types: [created]
 
-jobs:
-  update-tag:
-    runs-on: ubuntu-latest
+# jobs:
+#   update-tag:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
-      - name: Get Major version num and update tag
-        run: |
-          VERSION=${GITHUB_REF#refs/tags/}
-          MAJOR=${VERSION%%.*}
-          git config user.name 'Ruslan Bahna'
-          git config user.email 'ruslanbahna@gmail.com'
-          git tag -fa ${MAJOR} -m "Update major version tag"
-          git push origin ${MAJOR} --force
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Get Major version num and update tag
+#         run: |
+#           VERSION=${GITHUB_REF#refs/tags/}
+#           MAJOR=${VERSION%%.*}
+#           git config user.name 'Ruslan Bahna'
+#           git config user.email 'ruslanbahna@gmail.com'
+#           git tag -fa ${MAJOR} -m "Update major version tag"
+#           git push origin ${MAJOR} --force
