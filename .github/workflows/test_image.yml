@@ -25,9 +25,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
       - name: pull image
-        run: docker pull ubuntu:latest
+        run: docker pull photon:latest
 
       - name: Test Docker action
         uses: ./docker-bench-security
         with:
-          image-name: ubuntu
+          image-name: photon
