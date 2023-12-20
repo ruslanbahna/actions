@@ -19,6 +19,7 @@ runs:
       run: |
         chmod +x docker-bench-security.sh
         ./docker-bench-security.sh -c container_images -i ${{ inputs.image-name }}
+        cat ./log/docker-bench-security.log.json
         total_checks=$(jq '.checks' ./log/docker-bench-security.log.json)
         current_score=$(jq '.score' ./log/docker-bench-security.log.json)
         echo "total_checks=$total_checks" >> $GITHUB_ENV
