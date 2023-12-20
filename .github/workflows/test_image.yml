@@ -15,6 +15,9 @@ jobs:
           ls -la
           cd actions
           ls -la
+          cd container-image-size
+          ls
+          cat action.yml
 
       - name: Test Image Size Action
         uses: ./.github/actions/container-image-size
