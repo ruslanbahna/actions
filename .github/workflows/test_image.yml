@@ -13,5 +13,5 @@ jobs:
       - name: Test Image Size Action
         uses: ./container-image-size
         with:
-          build-image: 'node:14'
-          base-image: 'ubuntu:latest'
+          build-image: node:20
+          base-image: ubuntu:latest
