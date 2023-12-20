@@ -27,7 +27,7 @@ jobs:
       - name: pull image
         run: docker pull ubuntu:latest
 
-      - name: Test Image Size Action
+      - name: Test Docker action
         uses: ./docker-bench-security
         with:
           image-name: ubuntu
