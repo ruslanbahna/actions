@@ -13,7 +13,7 @@ jobs:
       - name: check content
         run: |
           ls -la
-          cd .github
+          cd actions
           ls -la
 
       - name: Test Image Size Action
