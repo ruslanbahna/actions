@@ -29,15 +29,15 @@ runs:
       shell: bash
 
     - name: Fail if Docker Benchmark did not make checks
-      if: ${{ steps.run-docker-benchmark.outputs.total_checks == '0' }}
+      if: ${{ env.total_checks == '0' }}
       run: |
         echo "Docker Benchmark did not appear to make any checks. Verify that the parameters used with docker-bench-security.sh are correct."
         exit 1
       shell: bash
 
     - name: Fail if Docker Benchmark score is too low
-      if: ${{ steps.run-docker-benchmark.outputs.current_score < 0 }}
+      if: ${{ env.current_score < 0 }}
       run: |
-        echo "Docker Benchmark has scored your image as ${{ steps.run-docker-benchmark.outputs.current_score }}. Raise the score to at least 0."
+        echo "Docker Benchmark has scored your image as ${{ env.current_score }}. Raise the score to at least 0."
         exit 1
       shell: bash
