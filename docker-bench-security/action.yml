@@ -19,6 +19,7 @@ runs:
       run: |
         docker info
         chmod +x docker-bench-security.sh
+        ls -la 
         ./docker-bench-security.sh -c container_images -i ${{ inputs.image-name }}
         echo "Debug: Contents of docker-bench-security.log.json:"
         cat ./log/docker-bench-security.log.json
