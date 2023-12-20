@@ -17,3 +17,16 @@ jobs:
         with:
           build-image: mcr.microsoft.com/openjdk/jdk:21-ubuntu
           base-image: ubuntu:latest
+  test-docker-benchmark:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: pull image
+        run: docker pull ubuntu:latesr
+
+      - name: Test Image Size Action
+        uses: ./docker-bench-security
+        with:
+          image-name: ubuntu
