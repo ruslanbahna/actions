@@ -5,9 +5,33 @@ on:
   push:
     paths-ignore:
       - '.vscode/**'
+      - '**/*.md'
   pull_request:
-    branches: [ "main" ]
+    paths-ignore:
+      - '.vscode/**'
+      - '**/*.md'
+  workflow_run:
+    workflows: ["Update Major Release Tag"]
+    types: [completed]
 
+jobs:
+  test-clean-workspace:
+    runs-on:
+    container: ubuntu:latest
+    steps:
+      - run: touch test_file
+      - name: Sanity check that test_file was created
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          if test_file -f "test_file"; then
+            echo "test_file was created."
+          else
+            echo "test_file should have been created."
+            exit 1
+          fi
+      - uses: ruslanbahna/actions/clean-workspace@v1
+      - name: Check if test_file was deleted
+        run: |
+          if test_file -f "test_file"; then
+            echo "test_file should have been deleted."
+            exit 1
+          fi
