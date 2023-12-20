@@ -1,0 +1,17 @@
+name: Test Image Size Action
+
+on: [push, pull_request]
+
+jobs:
+  test-image-size:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Test Image Size Action
+        uses: ./.github/actions/container-image-size
+        with:
+          build-image: 'node:14'
+          base-image: 'ubuntu:latest'

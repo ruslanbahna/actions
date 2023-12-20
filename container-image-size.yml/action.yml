@@ -1,0 +1,21 @@
+name: Print uncompressed container image size
+description: GitHub Container registry does not support showing image size, so we'll add them to the job summary. Prints out container image size
+inputs:
+  build-image:
+    description: Path to an image that was built and loaded into docker, including label. Assumption is that you have already built or pulled the image
+    required: true
+  base-image:
+    description: Path to an image that build image is based off, including the label, in order to make a comparison
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo "### Container image size" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        docker pull ${{ inputs.base-image }}
+        image_size=$(docker inspect -f "{{ .Size }}" ${{ inputs.base-image }} | numfmt --to=si --suffix=B)
+        echo "Uncompressed container image size for base image ${{ inputs.base-image }} is $image_size." >> $GITHUB_STEP_SUMMARY
+        image_size=$(docker inspect -f "{{ .Size }}" ${{ inputs.build-image }} | numfmt --to=si --suffix=B)
+        echo "Uncompressed container image size for build image ${{ inputs.build-image }} is $image_size." >> $GITHUB_STEP_SUMMARY
+      shell: bash
