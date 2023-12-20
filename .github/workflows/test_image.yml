@@ -22,9 +22,6 @@ jobs:
   
   test-docker-benchmark:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_CONTENT_TRUST: 1
-
     steps:
       - name: Check out code
         uses: actions/checkout@v3
