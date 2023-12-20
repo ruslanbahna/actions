@@ -5,10 +5,7 @@ inputs:
     description: The name of the Docker image, without the label. Assuming is that you have already built or pulled the image
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.image-name }}
+  using: 'composite'
   steps:
     - name: Download Docker Bench for Security
       uses: actions/checkout@v3
