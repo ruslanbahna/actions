@@ -10,15 +10,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: check content
-        run: |
-          ls -la
-          cd actions
-          ls -la
-          cd container-image-size
-          ls
-          cat action.yml
-
       - name: Test Image Size Action
         uses: ./container-image-size
         with:
