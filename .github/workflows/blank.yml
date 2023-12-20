@@ -1,0 +1,13 @@
+
+name: test
+
+on:
+  push:
+    paths-ignore:
+      - '.vscode/**'
+  pull_request:
+    branches: [ "main" ]
+
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
