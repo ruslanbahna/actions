@@ -18,7 +18,7 @@ runs:
       working-directory: ./docker-bench-security
       run: |
         chmod +x docker-bench-security.sh
-        ./docker-bench-security.sh -c container_images -i ${{ inputs.image-name }}
+        docker-bench-security.sh -c container_images -i ${{ inputs.image-name }}
         echo "Debug: Contents of docker-bench-security.log.json:"
         cat ./log/docker-bench-security.log.json
         total_checks=$(jq '.checks' ./log/docker-bench-security.log.json)
