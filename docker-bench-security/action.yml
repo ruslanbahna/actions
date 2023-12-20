@@ -10,13 +10,14 @@ runs:
     - name: Download Docker Bench for Security
       uses: actions/checkout@v3
       with:
-        repository: docker/docker-bench-security
-        path: docker-bench-security
+        repository: 'docker/docker-bench-security'
+        path: 'docker-bench-security'
 
     - name: Run Docker Bench for Security
       id: run-docker-benchmark
       env:
         DOCKER_CONTENT_TRUST: 1
+        IMAGE_NAME: ubuntu
       working-directory: ./docker-bench-security
       run: |
         docker info
