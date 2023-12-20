@@ -20,7 +20,7 @@ jobs:
           cat action.yml
 
       - name: Test Image Size Action
-        uses: ./.github/actions/container-image-size
+        uses: ./container-image-size
         with:
           build-image: 'node:14'
           base-image: 'ubuntu:latest'
