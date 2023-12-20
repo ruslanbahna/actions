@@ -1,5 +1,7 @@
 name: Test Image Size Action
-
+on:
+  push:
+    branches: ["main"]
 jobs:
   test-image-size:
     runs-on: ubuntu-latest
