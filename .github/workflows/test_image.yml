@@ -11,7 +11,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: check content
-        run: ls -la
+        run: |
+          ls -la
+          cd .github
+          ls -la
 
       - name: Test Image Size Action
         uses: ./.github/actions/container-image-size
