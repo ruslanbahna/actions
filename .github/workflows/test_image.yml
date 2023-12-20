@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+      - name: pull image
+        run: docker pull mcr.microsoft.com/openjdk/jdk:21-ubuntu
 
       - name: Test Image Size Action
         uses: ./container-image-size
