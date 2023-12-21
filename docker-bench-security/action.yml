@@ -6,6 +6,9 @@ inputs:
     required: true
 runs:
   using: 'composite'
+  args:
+
+  - '${{ inputs.image-name }}
   steps:
     - name: Download Docker Bench for Security
       uses: actions/checkout@v3
@@ -33,15 +36,6 @@ runs:
         echo "### Docker Benchmark for Security" >> $GITHUB_STEP_SUMMARY
         echo "Checks: $total_checks." >> $GITHUB_STEP_SUMMARY
         echo "Score: $current_score." >> $GITHUB_STEP_SUMMARY
-      shell: bash
-      
-    - name: Run Docker Bench Security
-      run: |
-        docker run --rm \
-          -v "${{ github.workspace }}/docker-bench-security/docker-bench-security.sh:/docker-bench-security.sh" \
-          --workdir / \
-          ${{ inputs.image-name }} \
-          /bin/sh -c "chmod +x /docker-bench-security.sh && /docker-bench-security.sh -c container_images -i ${{ inputs.image-name }}"
       shell: bash
 
     - name: Fail if Docker Benchmark did not make checks
