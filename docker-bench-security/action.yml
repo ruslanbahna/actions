@@ -34,7 +34,7 @@ runs:
         echo "Checks: $total_checks." >> $GITHUB_STEP_SUMMARY
         echo "Score: $current_score." >> $GITHUB_STEP_SUMMARY
       shell: bash
-        - name: Run Docker Bench Security
+      
     - name: Run Docker Bench Security
       run: |
         docker run --rm \
