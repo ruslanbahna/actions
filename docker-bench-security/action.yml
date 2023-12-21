@@ -6,8 +6,8 @@ inputs:
     required: true
 runs:
   using: 'composite'
-  args:
-    - '${{ inputs.image-name }}
+
+
   steps:
     - name: Download Docker Bench for Security
       uses: actions/checkout@v3
