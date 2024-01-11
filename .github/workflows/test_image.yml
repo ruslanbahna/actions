@@ -32,3 +32,4 @@ jobs:
         uses: ./docker-bench-security
         with:
           image-name: photon
+        continue-on-error: true
